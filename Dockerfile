@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+ARG COOKIE
+WORKDIR /slippi
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip xauth libao-dev libasound2-dev libavcodec-dev libavformat-dev libbluetooth-dev libenet-dev libgtk2.0-dev liblzo2-dev libminiupnpc-dev libopenal-dev libpulse-dev libreadline-dev libsfml-dev libsoil-dev libsoundtouch-dev libswscale-dev libusb-1.0-0-dev libwxbase3.0-dev libwxgtk3.0-gtk3-dev libxext-dev libxrandr-dev portaudio19-dev zlib1g-dev libudev-dev libevdev-dev libmbedtls-dev libcurl4-openssl-dev libegl1-mesa-dev libpng-dev qtbase5-private-dev libxxf86vm-dev x11proto-xinerama-dev
+RUN pip3 install melee
+COPY . .
+EXPOSE 8887
+RUN export NO_AT_BRIDGE=1
+RUN xauth add ${COOKIE}
+RUN xauth list
+CMD python3 /slippi/example.py -e /slippi/squashfs-root/usr/bin/ --iso /slippi/iso/smash.iso -p 1 -o 2 -d
