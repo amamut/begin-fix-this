@@ -1,3 +1,4 @@
 iso/*.iso
 .vscode
 squashfs-root
+Logs
