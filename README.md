@@ -1,5 +1,5 @@
 ## Usage
-Place `smash.iso` in `./iso/` directory.
+Place / symlink `smash.iso` in `./iso/` directory.
 
 ```bash
 ./run.sh
